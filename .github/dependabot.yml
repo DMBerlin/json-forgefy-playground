@@ -1,10 +1,10 @@
-# Dependabot configuration for json-forgefy
+# Dependabot configuration for json-forgefy-playground
 # This file configures automated dependency updates
 
 version: 2
 updates:
-  # Enable version updates for npm dependencies
-  - package-ecosystem: "npm"
+  # Enable version updates for pnpm dependencies
+  - package-ecosystem: "pnpm"
     directory: "/"
     schedule:
       interval: "weekly"
