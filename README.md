@@ -54,19 +54,21 @@ Then open http://localhost:8001 in your browser (or the port specified in `env` 
 
 ## ⚙️ Configuration
 
-### Port Configuration
+### Environment Variables
 
-The playground server port can be configured in the `env` file:
+Create a `.env` file in the project root:
 
 ```bash
-# playground/.env
+# .env
+GUIDE_URL=https://raw.githubusercontent.com/DMBerlin/json-forgefy/refs/heads/main/GUIDE.md
 PORT=8001
 ```
 
-Default port is 8000 if not specified. The serve script will:
-1. Read PORT from `env` file
-2. Fall back to `process.env.PORT` 
-3. Default to 8000 if neither is set
+**Required:**
+- `GUIDE_URL` - URL to the GUIDE.md file (required, no default)
+
+**Optional:**
+- `PORT` - Server port (defaults to 8000)
 
 ## 🏗️ Build Process
 
@@ -79,13 +81,15 @@ pnpm run build:api
 ```
 
 **How it works:**
-1. Parses `../GUIDE.md` to extract operator documentation
+1. Fetches `GUIDE.md` from the remote URL specified in `GUIDE_URL` environment variable
 2. Extracts operator names, descriptions, categories, parameters, examples
 3. Generates `api-reference-data.js` with structured data
 4. Powers autocomplete and API reference sidebar
 
+**Note:** `GUIDE_URL` environment variable is required. Set it in `.env` file or as an environment variable.
+
 **When to rebuild:**
-- After updating `GUIDE.md` in the project root
+- After updating the remote `GUIDE.md` file
 - After adding new operators
 - After changing operator descriptions or examples
 

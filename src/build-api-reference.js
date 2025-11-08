@@ -35,7 +35,15 @@ function loadEnvFile() {
 // Load .env file and merge with process.env
 const env = { ...loadEnvFile(), ...process.env };
 
-const GUIDE_URL = env.GUIDE_URL || 'https://raw.githubusercontent.com/DMBerlin/json-forgefy/refs/heads/main/GUIDE.md';
+// GUIDE_URL is required - no hardcoded fallback for security
+const GUIDE_URL = env.GUIDE_URL;
+if (!GUIDE_URL) {
+  console.error('❌ Error: GUIDE_URL environment variable is required.');
+  console.error('   Set it in .env file or as an environment variable.');
+  console.error('   Example: GUIDE_URL=https://raw.githubusercontent.com/user/repo/branch/GUIDE.md');
+  process.exit(1);
+}
+
 const OUTPUT_PATH = path.join(__dirname, 'api-reference-data.js');
 
 // Category icon mapping

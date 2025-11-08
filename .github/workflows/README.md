@@ -10,12 +10,13 @@ This workflow automatically builds and deploys the playground to GitHub Pages wh
    - Go to Settings → Pages
    - Source: Select "GitHub Actions"
 
-2. **Set up the GUIDE_URL secret** (optional):
+2. **Set up the GUIDE_URL secret** (required):
    - Go to Settings → Secrets and variables → Actions
    - Click "New repository secret"
    - Name: `GUIDE_URL`
-   - Value: The URL to your GUIDE.md file (default will be used if not set)
+   - Value: The URL to your GUIDE.md file
    - Example: `https://raw.githubusercontent.com/DMBerlin/json-forgefy/refs/heads/main/GUIDE.md`
+   - **Note:** This is required - the build will fail if GUIDE_URL is not set
 
 3. **Push to main/master branch**:
    - The workflow will automatically trigger
@@ -40,6 +41,7 @@ You can also manually trigger the workflow:
 ### Troubleshooting
 
 - **Build fails**: Check that all dependencies are in `package.json`
-- **GUIDE.md not found**: Verify the `GUIDE_URL` secret is set correctly, or the default URL is accessible
+- **GUIDE_URL not set**: The build requires `GUIDE_URL` to be set as a repository secret. Add it in Settings → Secrets and variables → Actions
+- **GUIDE.md not found**: Verify the `GUIDE_URL` secret points to a valid, accessible URL
 - **Pages not updating**: Make sure GitHub Pages is enabled and set to use "GitHub Actions" as the source
 
