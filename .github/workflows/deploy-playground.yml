@@ -49,14 +49,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: |
-          cd playground
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build playground
-        run: |
-          cd playground
-          pnpm run build
+        run: pnpm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
