@@ -12,10 +12,10 @@
     "dev": "pnpm run build && pnpm run serve"
   },
   "devDependencies": {
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.27.0",
     "http-server": "^14.1.1"
   },
   "dependencies": {
-    "json-forgefy": "^4.0.0"
+    "json-forgefy": "^4.0.1"
   }
 }
